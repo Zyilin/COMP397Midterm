@@ -1,3 +1,4 @@
-# COMP397-W2020-Test-Template-v2
-
-## Test template for COMP397 to be  used with Midterm test
+# COMP397Midterm
+## By Yi Lin Zhao 300976383
+## Feb. 22, 2020
+## Github: https://github.com/Zyilin/COMP397Midterm
