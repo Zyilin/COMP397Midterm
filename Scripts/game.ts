@@ -26,7 +26,10 @@ let Game = (function(){
         {id:"3", src:"./Assets/images/3.png"},
         {id:"4", src:"./Assets/images/4.png"},
         {id:"5", src:"./Assets/images/5.png"},
-        {id:"6", src:"./Assets/images/6.png"}
+        {id:"6", src:"./Assets/images/6.png"},
+        {id:"blank", src:"./Assets/images/blank.png"},
+        {id:"nextButton", src:"./Assets/images/nextButton.png"},
+        {id:"backButton", src:"./Assets/images/backButton.png"}
     ];
 
     function Preload():void
@@ -102,6 +105,10 @@ let Game = (function(){
             case scenes.State.END:
                 console.log("switch to End Scene");
                 currentScene = new scenes.End(); 
+                break;
+            case scenes.State.NEXT:
+                console.log("switch to Next Scene");
+                currentScene = new scenes.Next();
                 break;
         }
 

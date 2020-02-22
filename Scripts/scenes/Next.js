@@ -14,70 +14,68 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var scenes;
 (function (scenes) {
-    var Play = /** @class */ (function (_super) {
-        __extends(Play, _super);
-        // CONSTRUCTOR
-        function Play() {
+    var Next = /** @class */ (function (_super) {
+        __extends(Next, _super);
+        //constructor
+        function Next() {
             var _this = _super.call(this) || this;
-            _this.result = ["", ""];
+            _this.result = ["", "", "", ""];
+            _this.roll = [1, 1, 1, 1];
             _this.rollButton = new objects.Button();
-            _this.diceResult1 = new objects.Label();
-            _this.diceResult2 = new objects.Label();
+            _this.backButton = new objects.Button();
+            _this.finalResult = new objects.Label();
             _this.dice1 = new objects.Button();
             _this.dice2 = new objects.Button();
+            _this.dice3 = new objects.Button();
+            _this.dice4 = new objects.Button();
             _this.Start();
             return _this;
         }
-        // PRIVATE METHODS
-        // PUBLIC METHODS
-        Play.prototype.Roll = function () {
-            var roll = [];
-            for (var i = 0; i < 2; i++) {
+        // Public Methods
+        Next.prototype.Roll = function () {
+            for (var i = 0; i < 4; i++) {
                 //Generate random number between 1-6
-                roll[i] = util.Mathf.RandomRange(1, 6);
+                this.roll[i] = util.Mathf.RandomRange(1, 6);
                 // console.log(roll[i]);
-                this.result[i] = roll[i].toString();
+                this.result[i] = this.roll[i].toString();
             }
-            this.DisplayResult();
         };
-        //Display the result of the dice rolled
-        Play.prototype.DisplayResult = function () {
+        Next.prototype.AnalysResult = function () {
+        };
+        Next.prototype.DisplayResult = function () {
             this.removeChild(this.dice1);
             this.removeChild(this.dice2);
-            this.removeChild(this.diceResult1);
-            this.removeChild(this.diceResult2);
+            this.removeChild(this.dice3);
+            this.removeChild(this.dice4);
             this.dice1 = new objects.Button(config.Game.ASSETS.getResult(this.result[0]), 170, 200, true);
             this.dice2 = new objects.Button(config.Game.ASSETS.getResult(this.result[1]), 500, 200, true);
-            this.diceResult1 = new objects.Label(this.result[0], "20px", "Consolas", "#FFFFFF", 170, 330, true);
-            this.diceResult2 = new objects.Label(this.result[1], "20px", "Consolas", "#FFFFFF", 500, 330, true);
+            this.dice3 = new objects.Button(config.Game.ASSETS.getResult(this.result[2]), 170, 405, true);
+            this.dice4 = new objects.Button(config.Game.ASSETS.getResult(this.result[3]), 500, 405, true);
             this.addChild(this.dice1);
             this.addChild(this.dice2);
-            this.addChild(this.diceResult1);
-            this.addChild(this.diceResult2);
+            this.addChild(this.dice3);
+            this.addChild(this.dice4);
         };
-        //initialize and instatiate
-        Play.prototype.Start = function () {
+        Next.prototype.Start = function () {
             this.dice1 = new objects.Button(config.Game.ASSETS.getResult("blank"), 170, 200, true);
             this.dice2 = new objects.Button(config.Game.ASSETS.getResult("blank"), 500, 200, true);
-            this.rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 320, 430, true);
-            //this.nextButton = new objects.Button(config.Game.ASSETS.getResult("nextButton"), 480, 430, true);
+            this.dice3 = new objects.Button(config.Game.ASSETS.getResult("blank"), 170, 405, true);
+            this.dice4 = new objects.Button(config.Game.ASSETS.getResult("blank"), 500, 405, true);
+            this.rollButton = new objects.Button(config.Game.ASSETS.getResult("rollButton"), 430, 620, true);
             this.Main();
         };
-        Play.prototype.Update = function () {
+        Next.prototype.Update = function () {
         };
-        Play.prototype.Main = function () {
+        Next.prototype.Main = function () {
             var _this = this;
             this.addChild(this.dice1);
             this.addChild(this.dice2);
-            this.addChild(this.rollButton);
-            //this.addChild(this.nextButton);
+            this.addChild(this.dice3);
+            this.addChild(this.dice4);
             this.rollButton.on("click", function () { _this.Roll(); });
-            /*this.nextButton.on("click",()=>{
-                config.Game.SCENE = scenes.State.NEXT;
-            });*/
         };
-        return Play;
+        return Next;
     }(objects.Scene));
-    scenes.Play = Play;
+    scenes.Next = Next;
 })(scenes || (scenes = {}));
-//# sourceMappingURL=Play.js.map
+//# sourceMappingURL=Next.js.map
