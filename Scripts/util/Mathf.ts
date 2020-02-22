@@ -43,7 +43,9 @@ module util
 
         public static RandomRange(min:number, max:number):number
         {
-            return Math.random() * (max  - min + 1) + min;
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max  - min + 1)) + min;
         }
     }
 }

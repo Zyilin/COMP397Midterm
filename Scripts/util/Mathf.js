@@ -29,7 +29,9 @@ var util;
             return a + (b - a) * t;
         };
         Mathf.RandomRange = function (min, max) {
-            return Math.random() * (max - min + 1) + min;
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         };
         return Mathf;
     }());
